@@ -2,14 +2,20 @@ import numpy as np
 import timeit
 import tracemalloc
 import random 
+from random import randint
 
 MAX_VAL: int = 10 ** 5
 
 def random_descending_list(n: int) -> list[int]:
     """Generate a list of random descending integers."""
     new_list: list[int] = []
-    new_list.append(MAX_VAL)
-    new_list.append(random.randint)
+    num: int = randint(0, MAX_VAL)
+    new_list.append(num)
+    idx: int = 1
+    while idx < n: 
+        new_num: int = randint(0, new_list[idx - 1])
+        new_list.append(new_num)
+        idx += 1
     return new_list
     
 
@@ -29,7 +35,7 @@ def evaluate_runtime(fn_name, start_size: int, end_size: int) -> np.array:
 
 
 def evaluate_memory_usage(fn_name, start_size: int, end_size: int):
-    from exercises.ex07.sort_functions import selection_sort, insertion_sort
+    #from exercises.ex07.sort_functions import selection_sort, insertion_sort
     usage: list[float] = []
     for inp_size in range(start_size, end_size+1):
         l: list[int] = random_descending_list(inp_size)

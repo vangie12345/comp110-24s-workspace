@@ -13,6 +13,7 @@ def selection_sort(x: list[int]) -> None:
         min_idx: int = idx
         while nidx < len(x): # minimum must be set before the loop
             if x[nidx] < min:
+                min = x[nidx]
                 min_idx = nidx
             nidx += 1
         new = x[min_idx] # new is minimum
